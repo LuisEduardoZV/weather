@@ -1,8 +1,11 @@
 import Routes from './routes'
+import CustomTheme from './theme'
 
 function App () {
   return (
-    <Routes />
+    <CustomTheme>
+      <Routes />
+    </CustomTheme>
   )
 }
 
