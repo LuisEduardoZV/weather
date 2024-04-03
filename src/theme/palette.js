@@ -19,10 +19,10 @@ const defaultPalette = {
   colorLink: '',
   colorTextBase: '',
   colorBgBase: colors.background,
-  fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,\n'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',\n'Noto Color Emoji'",
-  fontFamilyCode: "'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
-  fontSize: 14,
-  borderRadius: 6
+  fontFamily: "'Dosis', sans-serif",
+  fontWeight: 400,
+  fontSize: 15,
+  borderRadius: 4
 }
 
 export { defaultPalette }
