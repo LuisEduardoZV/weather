@@ -32,7 +32,8 @@ const NavHeader = ({ search, setSearch }) => {
     <Header
       style={{
         padding: 0,
-        backgroundColor: token.colorPrimaryBg
+        backgroundColor: token.colorBgBase,
+        width: '100%'
       }}
     >
       <Row align='middle' style={{ paddingInline: 10 }}>
