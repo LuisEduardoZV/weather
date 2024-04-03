@@ -11,14 +11,21 @@
 	},
 	"dependencies": {
 		"@ant-design/icons": "^5.3.6",
+		"@react-three/drei": "^9.105.1",
+		"@react-three/fiber": "^8.16.1",
 		"antd": "^5.16.0",
+		"clsx": "^2.1.0",
 		"dayjs": "^1.11.10",
+		"framer-motion": "^11.0.24",
 		"localforage": "^1.10.0",
 		"match-sorter": "^6.3.4",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.22.3",
-		"recharts": "^2.12.3"
+		"recharts": "^2.12.3",
+		"tailwind-merge": "^2.2.2",
+		"three": "^0.163.0",
+		"three-globe": "^2.31.0"
 	},
 	"devDependencies": {
 		"@types/react": "^18.2.66",
