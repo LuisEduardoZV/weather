@@ -8,7 +8,8 @@ import useLocalStorage from '../hooks/useLocalStorage'
 const initialState = {
   ...config,
   onChangeTheme: () => {},
-  onChangeLocale: () => {}
+  onChangeLocale: () => {},
+  onChangeUnits: () => {}
 }
 
 const ConfigContext = createContext(initialState)
@@ -16,7 +17,8 @@ const ConfigContext = createContext(initialState)
 function ConfigProvider ({ children }) {
   const [config, setConfig] = useLocalStorage('tan-graph-config', {
     theme: initialState.theme,
-    locale: initialState.locale
+    locale: initialState.locale,
+    units: initialState.units
   })
 
   const onChangeTheme = (theme) => {
@@ -33,10 +35,17 @@ function ConfigProvider ({ children }) {
     })
   }
 
+  const onChangeUnits = (units) => {
+    setConfig({
+      ...config,
+      units
+    })
+  }
+
   return (
     <ConfigContext.Provider
       value={{
-        ...config, onChangeLocale, onChangeTheme
+        ...config, onChangeLocale, onChangeTheme, onChangeUnits
       }}
     >
       {children}

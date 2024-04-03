@@ -1,8 +1,11 @@
 export const MAIN_PATH = '/'
 
+export const BASE_URL_API = import.meta.env.VITE_BASE_URL_API
+
 const config = {
   theme: 'light',
-  locale: 'es'
+  locale: 'es',
+  units: 'metric' // imperial para Fahrenheit
 }
 
 export default config

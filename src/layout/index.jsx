@@ -1,48 +1,25 @@
+import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 
 // ant imports
-import { Col, Input, Layout, Row } from 'antd'
+import { Layout } from 'antd'
 
-const { Header, Content, Footer } = Layout
+// project  imports
+import NavHeader from './components/NavHeader'
+
+const { Content, Footer } = Layout
 
 const MainLayout = () => {
+  const [search, setSearch] = useState('')
+
   return (
     <Layout style={{
-      display: 'flex',
-      width: '100%',
-      margin: 0,
-      padding: 0,
       minHeight: '100vh'
     }}
     >
-      <Header
-        style={{
-          margin: 0,
-          padding: 0,
-          width: '100%'
-        }}
-      >
-        <Row style={{
-          backgroundColor: 'white'
-        }}
-        >
-          <Col xs={8}>
-            Climador
-          </Col>
-          <Col xs={8}>
-            <Input size='large' placeholder='Buscar por ciudad o códig postal' />
-          </Col>
-          <Col xs={8}>
-            Extras
-          </Col>
-        </Row>
-      </Header>
-      <Content style={{
-        padding: '0 48px',
-        backgroundColor: 'white'
-      }}
-      >
-        <Outlet />
+      <NavHeader search={search} setSearch={setSearch} />
+      <Content>
+        <Outlet context={[search, setSearch]} />
       </Content>
       <Footer style={{
         textAlign: 'center'
