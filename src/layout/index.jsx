@@ -56,7 +56,7 @@ const MainLayout = () => {
           <WorldGlobe position={todayData?.coord} country={todayData?.name} />
         </div>
         <Row>
-          <Outlet context={[search, setSearch]} />
+          <Outlet context={[search, setSearch, todayData]} />
         </Row>
       </Content>
       <Footer style={{
