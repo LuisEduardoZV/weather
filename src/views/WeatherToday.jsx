@@ -4,7 +4,7 @@ import { useOutletContext } from 'react-router-dom'
 // ant
 import { Col, Flex, Row, Space, Typography, theme } from 'antd'
 
-import { IconSun } from '@tabler/icons-react'
+import weather from '../utils/data/weathers.json'
 import { iconsWeather } from '../utils/iconWeather'
 
 const { Title, Text } = Typography
@@ -14,7 +14,12 @@ const WeatherToday = () => {
   const [search, setSearch, todayData] = useOutletContext()
   const { token } = useToken()
 
-  const icons = useMemo(() => (iconsWeather[todayData.weather[0].icon ?? '01d']), [todayData])
+  const infoWeather = useMemo(() => {
+    const clima = todayData?.weather[0]
+    const desc = weather[clima?.id ?? 200]
+    const icons = iconsWeather[todayData.weather[0].icon ?? '01d']
+    return { desc, icons }
+  }, [todayData])
 
   return (
     <Flex style={{ position: 'relative', justifyContent: 'end', width: '100%', paddingRight: 40, flexDirection: 'column', alignItems: 'end' }}>
@@ -96,10 +101,9 @@ const WeatherToday = () => {
           }}
           >
             {
-              Array.isArray(icons) && icons.map((i, key) => {
+              Array.isArray(infoWeather.icons) && infoWeather.icons.map((i, key) => {
                 const Icon = i
                 const type = key % 2 !== 0
-                console.log(token.colorTextDisabled)
                 return (
                   <Icon
                     key={key}
@@ -120,7 +124,7 @@ const WeatherToday = () => {
                 )
               })
             }
-            <Title level={5} style={{ margin: 0, padding: 0 }}>{todayData.weather[0].description}</Title>
+            <Title level={5} style={{ margin: 0, padding: 0 }}>{infoWeather.desc}</Title>
           </Flex>
         </Col>
       </Row>
