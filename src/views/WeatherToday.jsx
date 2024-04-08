@@ -1,12 +1,15 @@
 import { useMemo } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
+import dayjs from 'dayjs'
+
 // ant
-import { IconCloudFog, IconGauge } from '@tabler/icons-react'
+import { IconArrowBigLeftLine, IconCloudFog, IconGauge, IconSunrise, IconSunset, IconWhirl, IconWind } from '@tabler/icons-react'
 import { Col, Flex, Row, Typography, theme } from 'antd'
 
 // project imports
 import useConfig from '../hooks/useConfig'
+import Card from '../ui-components/Card'
 import MainWeatherToday from './components/MainWeatherToday'
 
 import weather from '../utils/data/weathers.json'
@@ -36,10 +39,8 @@ const WeatherToday = () => {
             border: '1px solid',
             borderColor: 'rgba(0, 0, 0, 0.013)',
             margin: 0,
-            borderRadius: 4,
             minHeight: 130,
-            height: '100%',
-            boxShadow: '0.9px 2.2px 1.8px rgba(0, 0, 0, 0.009),2.2px 5.5px 4.4px rgba(0, 0, 0, 0.013),4.4px 11.2px 9px rgba(0, 0, 0, 0.017),9.1px 23px 18.6px rgba(0, 0, 0, 0.021),25px 63px 51px rgba(0, 0, 0, 0.03)'
+            height: '100%'
           }}
         >
           <MainWeatherToday data={todayData.main} title={position.title} />
@@ -158,8 +159,83 @@ const WeatherToday = () => {
         </Col>
       </Row>
 
-      <Row style={{ width: '100%', marginTop: 90, padding: 0, gap: '6%', height: 400 }}>
-        asdasd
+      <Row style={{ width: '100%', marginTop: 90, padding: 0, justifyContent: 'space-between', alignItems: 'end' }}>
+        <Col xs={4}>
+          <Card vertical style={{ position: 'relative', padding: 10 }}>
+            <div className='circle'>
+              <div className='wave' />
+            </div>
+            <Flex vertical align='center' style={{ zIndex: 2, height: '100%', margin: 0, gap: 15 }}>
+              <Title level={5} type='secondary' style={{ margin: 0 }}>Nivel del Mar</Title>
+              <Text strong italic>{todayData.main.sea_level} {units.press}</Text>
+            </Flex>
+          </Card>
+        </Col>
+        <Col xs={4} style={{ position: 'relative' }}>
+          <Card vertical style={{ position: 'relative', padding: 10, justifyContent: 'center' }}>
+            <Row>
+              <Col xs={12}>
+                <Flex vertical align='center' justify='space-between' gap={10}>
+                  <IconSunrise
+                    style={{
+                      width: 45,
+                      color: token.colorWarningActive,
+                      transition: 'transform 0.3s ease-in-out, margin 0.3s ease-in-out'
+                    }}
+                    className='iconsunset'
+                  />
+                  <Text italic>
+                    {dayjs(new Date(todayData.sys.sunrise * 1000)).format('HH:mm')}
+                  </Text>
+                </Flex>
+              </Col>
+              <Col xs={12}>
+                <Flex vertical align='center' justify='space-between' gap={10}>
+                  <IconSunset
+                    style={{
+                      width: 45,
+                      color: token.colorWarningActive,
+                      transition: 'transform 0.3s ease-in-out, margin 0.3s ease-in-out'
+                    }}
+                    className='iconsunset'
+                  />
+                  <Text italic>{dayjs(new Date(todayData.sys.sunset * 1000)).format('HH:mm')}</Text>
+                </Flex>
+              </Col>
+            </Row>
+          </Card>
+        </Col>
+        <Col xs={11}>
+          <Card vertical style={{ position: 'relative', padding: 10 }}>
+            <div id='Clouds'>
+              <div className='Cloud Foreground' />
+              <div className='Cloud Background' />
+              <div className='Cloud Foreground' />
+              <div className='Cloud Background' />
+              <div className='Cloud Foreground' />
+              <div className='Cloud Background' />
+              <div className='Cloud Background' />
+              <div className='Cloud Foreground' />
+              <div className='Cloud Background' />
+              <div className='Cloud Background' />
+            </div>
+            <Title level={3} type='secondary' style={{ margin: 0 }}>Viento</Title>
+            <Flex style={{ zIndex: 2, justifyContent: 'space-between', marginTop: 10 }}>
+              <Flex vertical align='center'>
+                <IconWind color={token.colorPrimary} />
+                <Text italic style={{ fontWeight: 500 }}>{todayData.wind.speed} {units.wind}</Text>
+              </Flex>
+              <Flex vertical align='center'>
+                <IconArrowBigLeftLine style={{ transform: `rotate(${todayData.wind.deg}deg)` }} color={token.colorPrimary} />
+                <Text italic style={{ fontWeight: 500 }}>{todayData.wind.deg} °</Text>
+              </Flex>
+              <Flex vertical align='center'>
+                <IconWhirl color={token.colorPrimary} />
+                <Text italic style={{ fontWeight: 500 }}>{todayData.wind.gust} {units.wind}</Text>
+              </Flex>
+            </Flex>
+          </Card>
+        </Col>
       </Row>
     </Flex>
   )

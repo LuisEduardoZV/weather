@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
 
 // ant
-import { Flex, Space, Typography, theme } from 'antd'
+import { Space, Typography, theme } from 'antd'
 
 // project
 import useConfig from '../../hooks/useConfig'
+import Card from '../../ui-components/Card'
 
 const { Title, Text } = Typography
 const { useToken } = theme
@@ -30,7 +31,7 @@ const MainWeatherToday = ({ data, title }) => {
         content: ''
       }}
       />
-      <Flex
+      <Card
         vertical style={{
           minHeight: 130,
           justifyContent: 'space-between',
@@ -39,7 +40,9 @@ const MainWeatherToday = ({ data, title }) => {
           padding: 10,
           zIndex: 10,
           backgroundColor: 'transparent',
-          gap: 15
+          gap: 15,
+          borderRadius: 8,
+          boxShadow: '0.9px 2.2px 1.8px rgba(0, 0, 0, 0.009),2.2px 5.5px 4.4px rgba(0, 0, 0, 0.013),4.4px 11.2px 9px rgba(0, 0, 0, 0.017),9.1px 23px 18.6px rgba(0, 0, 0, 0.021),25px 63px 51px rgba(0, 0, 0, 0.03)'
         }}
       >
         <Title level={4} style={{ margin: 0 }}>{title}</Title>
@@ -54,7 +57,7 @@ const MainWeatherToday = ({ data, title }) => {
             <Text style={{ color: token.colorPrimary, fontWeight: 700 }}>Humedad: <Text italic style={{ fontWeight: 400 }}>{data.humidity} °{units.temp}</Text></Text>
           </Space>
         </Space>
-      </Flex>
+      </Card>
     </>
   )
 }
