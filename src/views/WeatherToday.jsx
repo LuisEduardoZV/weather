@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
 // ant
@@ -6,6 +6,7 @@ import { IconCloudFog, IconGauge } from '@tabler/icons-react'
 import { Col, Flex, Row, Typography, theme } from 'antd'
 
 // project imports
+import useConfig from '../hooks/useConfig'
 import MainWeatherToday from './components/MainWeatherToday'
 
 import weather from '../utils/data/weathers.json'
@@ -17,6 +18,7 @@ const { useToken } = theme
 const WeatherToday = () => {
   const [, , todayData, position] = useOutletContext()
   const { token } = useToken()
+  const { units } = useConfig()
 
   const infoWeather = useMemo(() => {
     const clima = todayData?.weather[0]
@@ -74,7 +76,7 @@ const WeatherToday = () => {
       }
             />
             <Text type='secondary' style={{ margin: 0, padding: 0, marginTop: 10 }}>Presión</Text>
-            <Title level={5} style={{ margin: 0, padding: 0 }}>{todayData.main.pressure} hPa</Title>
+            <Title level={5} style={{ margin: 0, padding: 0 }}>{todayData.main.pressure} {units.press}</Title>
           </Flex>
         </Col>
 

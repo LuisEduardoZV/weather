@@ -11,7 +11,12 @@ export const KEY_GOOGLE_API = import.meta.env.VITE_KEY_GOOGLE_API
 const config = {
   theme: 'light',
   locale: 'es',
-  units: 'metric' // imperial para Fahrenheit
+  units: {
+    type: 'metric', // imperial para Fahrenheit
+    temp: 'C',
+    press: 'hPa',
+    wind: 'm/s'
+  }
 }
 
 export default config

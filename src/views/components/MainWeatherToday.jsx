@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import { useMemo } from 'react'
 
 // ant
 import { Flex, Space, Typography, theme } from 'antd'
@@ -13,15 +12,6 @@ const { useToken } = theme
 const MainWeatherToday = ({ data, title }) => {
   const { token } = useToken()
   const { units } = useConfig()
-
-  const unidades = useMemo(() => {
-    switch (units) {
-      case 'metric':
-        return '° C'
-      default:
-        return '° F'
-    }
-  }, [units])
 
   return (
     <>
@@ -55,13 +45,13 @@ const MainWeatherToday = ({ data, title }) => {
         <Title level={4} style={{ margin: 0 }}>{title}</Title>
         <Space direction='horizontal' style={{ width: '100%', display: 'flex', gap: '15%', alignItems: 'start' }}>
           <Space direction='vertical' style={{ width: '100%', height: '100%' }}>
-            <Text style={{ color: token.colorPrimaryText, fontWeight: 700 }}>Temperatura: <Text italic style={{ fontWeight: 400 }}>{data.temp} {unidades}</Text></Text>
-            <Text style={{ color: token.colorPrimary, fontWeight: 700 }}>Temperatura Máxima: <Text italic style={{ fontWeight: 400 }}>{data.temp_max} {unidades}</Text></Text>
-            <Text style={{ color: token.colorPrimary, fontWeight: 700 }}>Temperatura Mínima: <Text italic style={{ fontWeight: 400 }}>{data.temp_min} {unidades}</Text></Text>
+            <Text style={{ color: token.colorPrimaryText, fontWeight: 700 }}>Temperatura: <Text italic style={{ fontWeight: 400 }}>{data.temp} °{units.temp}</Text></Text>
+            <Text style={{ color: token.colorPrimary, fontWeight: 700 }}>Temperatura Máxima: <Text italic style={{ fontWeight: 400 }}>{data.temp_max} °{units.temp}</Text></Text>
+            <Text style={{ color: token.colorPrimary, fontWeight: 700 }}>Temperatura Mínima: <Text italic style={{ fontWeight: 400 }}>{data.temp_min} °{units.temp}</Text></Text>
           </Space>
           <Space direction='vertical' style={{ width: '100%', height: '100%' }}>
-            <Text style={{ color: token.colorPrimary, fontWeight: 700 }}>Sensación térmica: <Text italic style={{ fontWeight: 400 }}>{data.feels_like} {unidades}</Text></Text>
-            <Text style={{ color: token.colorPrimary, fontWeight: 700 }}>Humedad: <Text italic style={{ fontWeight: 400 }}>{data.humidity} {unidades}</Text></Text>
+            <Text style={{ color: token.colorPrimary, fontWeight: 700 }}>Sensación térmica: <Text italic style={{ fontWeight: 400 }}>{data.feels_like} °{units.temp}</Text></Text>
+            <Text style={{ color: token.colorPrimary, fontWeight: 700 }}>Humedad: <Text italic style={{ fontWeight: 400 }}>{data.humidity} °{units.temp}</Text></Text>
           </Space>
         </Space>
       </Flex>

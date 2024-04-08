@@ -7,6 +7,7 @@ import { Outlet } from 'react-router-dom'
 import { Layout, Row } from 'antd'
 
 // project  imports
+import useConfig from '../hooks/useConfig'
 import { WorldGlobe } from '../ui-components/WorldGlobe'
 import FilterWeather from './components/FilterWeather'
 import NavHeader from './components/NavHeader'
@@ -18,6 +19,8 @@ import { apiCall } from '../utils/apiFunctions'
 const { Content, Footer } = Layout
 
 const MainLayout = () => {
+  const { units } = useConfig()
+
   const [search, setSearch] = useState('')
   const [view, setView] = useState('today')
 
@@ -43,7 +46,7 @@ const MainLayout = () => {
     (async () => {
       try {
         if (position?.cords) {
-          const response = await apiCall({ url: `${BASE_URL_API}/weather?lat=${position?.cords?.lat}&lon=${position?.cords?.lng}&appid=${KEY_API}&units=metric` })
+          const response = await apiCall({ url: `${BASE_URL_API}/weather?lat=${position?.cords?.lat}&lon=${position?.cords?.lng}&appid=${KEY_API}&units=${units.type}` })
           setTodayData(response)
 
           setLoading(false)
@@ -54,7 +57,7 @@ const MainLayout = () => {
     })()
 
     return () => setLoading(true)
-  }, [position])
+  }, [position, units.type])
 
   if (loading) return null
   return (

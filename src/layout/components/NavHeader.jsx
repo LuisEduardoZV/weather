@@ -17,7 +17,24 @@ const NavHeader = ({ search, setSearch }) => {
   const { units, onChangeUnits, locale, onChangeLocale } = useConfig()
 
   const handleChangeUnit = (val) => {
-    onChangeUnits(val)
+    switch (val) {
+      case 'imperial':
+        onChangeUnits({
+          type: 'imperial',
+          temp: 'F',
+          press: 'psi',
+          wind: 'millas/hr'
+        })
+        break
+      default:
+        onChangeUnits({
+          type: 'metric',
+          temp: 'C',
+          press: 'hPa',
+          wind: 'm/s'
+        })
+        break
+    }
   }
 
   const handleGhangeLocale = () => {
@@ -45,10 +62,10 @@ const NavHeader = ({ search, setSearch }) => {
         </Col>
         <Col xs={3} style={{ alignItems: 'center' }}>
           <Space>
-            <Button type={units === 'imperial' ? 'default' : 'text'} shape='circle' onClick={() => handleChangeUnit('imperial')}>
+            <Button type={units.type === 'imperial' ? 'default' : 'text'} shape='circle' onClick={() => handleChangeUnit('imperial')}>
               °F
             </Button>
-            <Button type={units === 'metrics' ? 'default' : 'text'} shape='circle' onClick={() => handleChangeUnit('metric')}>
+            <Button type={units.type === 'metric' ? 'default' : 'text'} shape='circle' onClick={() => handleChangeUnit('metric')}>
               °C
             </Button>
             <Button shape='round' icon={locale === 'light' ? <MoonFilled /> : <StarFilled />} onClick={handleGhangeLocale} />
