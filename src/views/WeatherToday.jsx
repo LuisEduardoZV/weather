@@ -31,9 +31,26 @@ const WeatherToday = () => {
     return { desc, icons }
   }, [todayData])
 
+  const contamination = useMemo(() => {
+    const info = todayData.air.list[0].components
+    const respose = []
+    for (const key in info) {
+      if (Object.hasOwnProperty.call(info, key)) {
+        const element = info[key]
+        respose.push({
+          title: key?.toUpperCase()?.replace(/[^a-zA-Z]/g, ''),
+          value: element,
+          sufix: 'μg/m3',
+          elevation: key?.match(/[^a-zA-Z]/g)?.join('')?.replace('_', '.') ?? null
+        })
+      }
+    }
+    return respose
+  }, [todayData])
+
   return (
-    <Flex style={{ position: 'relative', justifyContent: 'end', width: '100%', paddingRight: 40, flexDirection: 'column', alignItems: 'end' }}>
-      <Row style={{ maxWidth: '50%', width: '100%', marginTop: 80, padding: 0 }}>
+    <Flex style={{ position: 'relative', justifyContent: 'end', width: '100%', paddingRight: 0, flexDirection: 'column', alignItems: 'end' }}>
+      <Row style={{ maxWidth: '60%', width: '100%', marginTop: 80, padding: 0, paddingInline: '10%' }}>
         <Col
           xs={24} style={{
             position: 'relative',
@@ -48,7 +65,7 @@ const WeatherToday = () => {
         </Col>
       </Row>
 
-      <Row style={{ maxWidth: '50%', width: '100%', marginTop: 60 }}>
+      <Row style={{ maxWidth: '60%', width: '100%', marginTop: 60, paddingInline: '10%' }}>
         <HoverEffect>
           <Flex style={{
             display: 'flex',
@@ -132,7 +149,7 @@ const WeatherToday = () => {
         </HoverEffect>
       </Row>
 
-      <Row style={{ width: '100%', marginTop: 60, padding: 0, justifyContent: 'space-between', alignItems: 'end' }}>
+      <Row style={{ width: '100%', marginTop: 60, padding: 0, justifyContent: 'space-between', alignItems: 'end', paddingInline: '10%' }}>
         <Col xs={4}>
           <Card vertical style={{ position: 'relative', padding: 10 }}>
             <div className='circle'>
@@ -208,6 +225,29 @@ const WeatherToday = () => {
               </Flex>
             </Flex>
           </Card>
+        </Col>
+      </Row>
+
+      <Row style={{ width: '100%', paddingInline: 50, backgroundColor: token.colorPrimary, paddingTop: 20, paddingBottom: 40, marginTop: 60 }} justify='center'>
+        <Col xs={24}>
+          <Flex style={{ width: '100%' }}>
+            <Title style={{ marginTop: 10, color: token.colorTextLightSolid }}>Contaminación atmosférica</Title>
+          </Flex>
+        </Col>
+        <Col xs={12} style={{ marginTop: 50 }}>
+          <Row style={{ width: '100%', justifyContent: 'space-between', rowGap: 20 }}>
+            {contamination.map((op, index) => (
+              <Col key={index} xs={7}>
+                <Flex
+                  vertical align='center' justify='center'
+                  className='cardAir'
+                >
+                  <Title level={3} style={{ margin: 0 }}>{op.title}</Title>
+                  <Text>{op.value} {op.sufix}</Text>
+                </Flex>
+              </Col>
+            ))}
+          </Row>
         </Col>
       </Row>
     </Flex>

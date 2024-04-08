@@ -311,3 +311,29 @@
 	display: block;
 	border-radius: 1.125rem;
 }
+
+.cardAir {
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 5px;
+	border-color: $primaryLight;
+	background-color: $primaryMain;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	transition: all 0.3s ease-in-out;
+}
+
+.cardAir > h3,
+.cardAir > span {
+	color: $grey50;
+}
+
+.cardAir:hover {
+	border-color: $primaryMain;
+	background-color: $primaryLight;
+}
+
+.cardAir:hover > h3,
+.cardAir:hover > span {
+	color: $primaryMain;
+}
