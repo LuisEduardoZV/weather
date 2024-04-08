@@ -10,6 +10,7 @@ import { Col, Flex, Row, Typography, theme } from 'antd'
 // project imports
 import useConfig from '../hooks/useConfig'
 import Card from '../ui-components/Card'
+import { HoverEffect } from '../ui-components/extended/CardHoverEffect'
 import MainWeatherToday from './components/MainWeatherToday'
 
 import weather from '../utils/data/weathers.json'
@@ -47,16 +48,8 @@ const WeatherToday = () => {
         </Col>
       </Row>
 
-      <Row style={{ maxWidth: '50%', width: '100%', marginTop: 60, padding: 0, gap: '6%' }}>
-
-        <Col
-          xs={7} style={{
-            margin: 0,
-            borderRadius: 4,
-            minHeight: 120,
-            height: '100%'
-          }}
-        >
+      <Row style={{ maxWidth: '50%', width: '100%', marginTop: 60 }}>
+        <HoverEffect>
           <Flex style={{
             display: 'flex',
             flexDirection: 'column',
@@ -79,16 +72,6 @@ const WeatherToday = () => {
             <Text type='secondary' style={{ margin: 0, padding: 0, marginTop: 10 }}>Presión</Text>
             <Title level={5} style={{ margin: 0, padding: 0 }}>{todayData.main.pressure} {units.press}</Title>
           </Flex>
-        </Col>
-
-        <Col
-          xs={7} style={{
-            margin: 0,
-            borderRadius: 4,
-            minHeight: 120,
-            height: '100%'
-          }}
-        >
           <Flex style={{
             display: 'flex',
             flexDirection: 'column',
@@ -124,16 +107,6 @@ const WeatherToday = () => {
             <Text type='secondary' style={{ margin: 0, padding: 0, marginTop: 10 }}>Condiciones</Text>
             <Title level={5} style={{ margin: 0, padding: 0 }}>{infoWeather.desc}</Title>
           </Flex>
-        </Col>
-
-        <Col
-          xs={7} style={{
-            margin: 0,
-            borderRadius: 4,
-            minHeight: 120,
-            height: '100%'
-          }}
-        >
           <Flex style={{
             display: 'flex',
             flexDirection: 'column',
@@ -156,10 +129,10 @@ const WeatherToday = () => {
             <Text type='secondary' style={{ margin: 0, padding: 0, marginTop: 10 }}># Nubes</Text>
             <Title level={5} style={{ margin: 0, padding: 0 }}>{todayData.clouds.all}</Title>
           </Flex>
-        </Col>
+        </HoverEffect>
       </Row>
 
-      <Row style={{ width: '100%', marginTop: 90, padding: 0, justifyContent: 'space-between', alignItems: 'end' }}>
+      <Row style={{ width: '100%', marginTop: 60, padding: 0, justifyContent: 'space-between', alignItems: 'end' }}>
         <Col xs={4}>
           <Card vertical style={{ position: 'relative', padding: 10 }}>
             <div className='circle'>
