@@ -95,7 +95,7 @@ export function Globe ({ globeConfig, data }) {
         .atmosphereColor(defaultProps.atmosphereColor)
         .atmosphereAltitude(defaultProps.atmosphereAltitude)
         .hexPolygonColor(e => {
-          if (e.properties.name?.toLowerCase() === country?.toLowerCase()) return defaultProps.countryColor
+          if (e.id?.toLowerCase() === country?.toLowerCase()) return defaultProps.countryColor
           return defaultProps.polygonColor
         })
       startAnimation()

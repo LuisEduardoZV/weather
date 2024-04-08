@@ -48,7 +48,7 @@ const NavHeader = ({ search, setSearch }) => {
             <Button type={units === 'imperial' ? 'default' : 'text'} shape='circle' onClick={() => handleChangeUnit('imperial')}>
               °F
             </Button>
-            <Button type={units === 'metrics' ? 'default' : 'text'} shape='circle' onClick={() => handleChangeUnit('metrics')}>
+            <Button type={units === 'metrics' ? 'default' : 'text'} shape='circle' onClick={() => handleChangeUnit('metric')}>
               °C
             </Button>
             <Button shape='round' icon={locale === 'light' ? <MoonFilled /> : <StarFilled />} onClick={handleGhangeLocale} />

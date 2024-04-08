@@ -1,8 +1,12 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
 // ant
-import { Col, Flex, Row, Space, Typography, theme } from 'antd'
+import { IconCloudFog, IconGauge } from '@tabler/icons-react'
+import { Col, Flex, Row, Typography, theme } from 'antd'
+
+// project imports
+import MainWeatherToday from './components/MainWeatherToday'
 
 import weather from '../utils/data/weathers.json'
 import { iconsWeather } from '../utils/iconWeather'
@@ -11,7 +15,7 @@ const { Title, Text } = Typography
 const { useToken } = theme
 
 const WeatherToday = () => {
-  const [search, setSearch, todayData] = useOutletContext()
+  const [, , todayData, position] = useOutletContext()
   const { token } = useToken()
 
   const infoWeather = useMemo(() => {
@@ -36,55 +40,14 @@ const WeatherToday = () => {
             boxShadow: '0.9px 2.2px 1.8px rgba(0, 0, 0, 0.009),2.2px 5.5px 4.4px rgba(0, 0, 0, 0.013),4.4px 11.2px 9px rgba(0, 0, 0, 0.017),9.1px 23px 18.6px rgba(0, 0, 0, 0.021),25px 63px 51px rgba(0, 0, 0, 0.03)'
           }}
         >
-          <div style={{
-            position: 'absolute',
-            filter: 'blur(1px)',
-            top: 0,
-            left: 0,
-            width: '100%',
-            minHeight: 130,
-            height: '100%',
-            margin: 0,
-            padding: 10,
-            backgroundColor: 'rgba(0, 0, 0, 0.02)',
-            zIndex: 0,
-            content: ''
-          }}
-          />
-          <Flex
-            vertical style={{
-              minHeight: 130,
-              justifyContent: 'space-between',
-              width: '100%',
-              margin: 0,
-              padding: 10,
-              zIndex: 10,
-              backgroundColor: 'transparent'
-            }}
-          >
-            <Title level={4} style={{ margin: 0 }}>Cuauhtémoc, México a 14:35 CST</Title>
-            <Space direction='horizontal' style={{ width: '100%', display: 'flex', gap: '15%' }}>
-              <Space direction='vertical' style={{ width: '100%' }}>
-                <Text>Temperatura: {todayData.main.temp} °C</Text>
-                <Text>Temperatura Máxima: {todayData.main.temp_max} °C</Text>
-                <Text>Temperatura Mínima: {todayData.main.temp_min} °C</Text>
-              </Space>
-              <Space direction='vertical' style={{ width: '100%' }}>
-                <Text>Sensación térmica: {todayData.main.feels_like} °C</Text>
-                <Text>Humedad: {todayData.main.humidity} %</Text>
-              </Space>
-              {/* <img alt='icon' src='https://openweathermap.org/img/wn/01n.png' />
-            <img alt='icon' src='https://openweathermap.org/img/wn/02n.png' />
-            <img alt='icon' src='https://openweathermap.org/img/wn/03n.png' />
-        <img alt='icon' src='https://openweathermap.org/img/wn/04n.png' /> */}
-            </Space>
-          </Flex>
+          <MainWeatherToday data={todayData.main} title={position.title} />
         </Col>
       </Row>
 
-      <Row style={{ maxWidth: '50%', width: '100%', marginTop: 70, padding: 0, gap: '10%' }}>
+      <Row style={{ maxWidth: '50%', width: '100%', marginTop: 60, padding: 0, gap: '6%' }}>
+
         <Col
-          xs={10} style={{
+          xs={7} style={{
             margin: 0,
             borderRadius: 4,
             minHeight: 120,
@@ -94,7 +57,38 @@ const WeatherToday = () => {
           <Flex style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: 10,
+            width: '100%',
+            alignItems: 'center',
+            position: 'relative'
+          }}
+          >
+            <IconGauge
+              color={token.colorPrimary}
+              size={70}
+              style={
+        {
+          opacity: 1,
+          zIndex: 10,
+          filter: `drop-shadow(4.5px 4.5px 4.9px ${token.colorPrimary})`
+        }
+      }
+            />
+            <Text type='secondary' style={{ margin: 0, padding: 0, marginTop: 10 }}>Presión</Text>
+            <Title level={5} style={{ margin: 0, padding: 0 }}>{todayData.main.pressure} hPa</Title>
+          </Flex>
+        </Col>
+
+        <Col
+          xs={7} style={{
+            margin: 0,
+            borderRadius: 4,
+            minHeight: 120,
+            height: '100%'
+          }}
+        >
+          <Flex style={{
+            display: 'flex',
+            flexDirection: 'column',
             width: '100%',
             alignItems: 'center',
             position: 'relative'
@@ -113,7 +107,7 @@ const WeatherToday = () => {
                       style: {
                         position: 'absolute',
                         right: '52%',
-                        top: '7%',
+                        top: '5%',
                         transform: 'translateX(50%)',
                         opacity: 1,
                         zIndex: 10,
@@ -124,9 +118,46 @@ const WeatherToday = () => {
                 )
               })
             }
+            <Text type='secondary' style={{ margin: 0, padding: 0, marginTop: 10 }}>Condiciones</Text>
             <Title level={5} style={{ margin: 0, padding: 0 }}>{infoWeather.desc}</Title>
           </Flex>
         </Col>
+
+        <Col
+          xs={7} style={{
+            margin: 0,
+            borderRadius: 4,
+            minHeight: 120,
+            height: '100%'
+          }}
+        >
+          <Flex style={{
+            display: 'flex',
+            flexDirection: 'column',
+            width: '100%',
+            alignItems: 'center',
+            position: 'relative'
+          }}
+          >
+            <IconCloudFog
+              color={token.colorInfo}
+              size={70}
+              style={
+                {
+                  opacity: 1,
+                  zIndex: 10,
+                  filter: `drop-shadow(4.5px 4.5px 4.9px ${token.colorInfo})`
+                }
+              }
+            />
+            <Text type='secondary' style={{ margin: 0, padding: 0, marginTop: 10 }}># Nubes</Text>
+            <Title level={5} style={{ margin: 0, padding: 0 }}>{todayData.clouds.all}</Title>
+          </Flex>
+        </Col>
+      </Row>
+
+      <Row style={{ width: '100%', marginTop: 90, padding: 0, gap: '6%', height: 400 }}>
+        asdasd
       </Row>
     </Flex>
   )
