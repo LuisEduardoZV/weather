@@ -1,6 +1,29 @@
 // color variants
 @import 'themes-vars.module.scss';
 
+// Custom Scroll Bar
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: $background;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: $grey400;
+	border-radius: 4px;
+	transition: background 0.3s ease-in-out;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: $grey500;
+}
+
 #Clouds {
 	position: absolute;
 	top: 0;
@@ -57,12 +80,14 @@
 	height: 10%;
 	min-height: 20px;
 	z-index: 3;
+	border-radius: 8;
 }
 .Cloud.Background {
 	height: 9.09090909%;
 	min-height: 8px;
 	-webkit-animation-duration: 210s;
 	animation-duration: 210s;
+	border-radius: 8;
 }
 @-webkit-keyframes Float {
 	from {
@@ -280,7 +305,6 @@
 	margin-left: 0px;
 	margin-top: -240%;
 	border-radius: 35%;
-	background: rgba(255, 255, 255, 1);
 	animation: wave 20s infinite linear;
 }
 
@@ -308,6 +332,8 @@
 	height: 100%;
 	width: 100%;
 	background-color: $primaryLight;
+	box-shadow: 0.9px 2.2px 1.8px rgba(0, 0, 0, 0.009), 2.2px 5.5px 4.4px rgba(0, 0, 0, 0.013), 4.4px 11.2px 9px rgba(0, 0, 0, 0.017), 9.1px 23px 18.6px rgba(0, 0, 0, 0.021),
+		25px 63px 51px rgba(0, 0, 0, 0.03);
 	display: block;
 	border-radius: 1.125rem;
 }

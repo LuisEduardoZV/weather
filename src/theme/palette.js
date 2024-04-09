@@ -28,6 +28,7 @@ const defaultPalette = {
   colorLink: '',
   colorTextBase: '',
   colorBgBase: colors.background,
+  colorPaper: colors.paper,
   fontFamily: "'Dosis', sans-serif",
   fontWeight: 400,
   fontSize: 15,
