@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import { useState } from 'react'
 
 // ant
 import { Layout, theme } from 'antd'
@@ -10,8 +9,7 @@ import NavHeader from './components/NavHeader'
 const { Content, Footer } = Layout
 const { useToken } = theme
 
-const MainLayout = ({ children }) => {
-  const [search, setSearch] = useState('')
+const MainLayout = ({ children, setSearch }) => {
   const { token } = useToken()
 
   return (
@@ -24,7 +22,7 @@ const MainLayout = ({ children }) => {
       position: 'relative'
     }}
     >
-      <NavHeader search={search} setSearch={setSearch} />
+      <NavHeader setSearch={setSearch} />
       <Content style={{
         maxWidth: '100%',
         width: '100%',
@@ -47,7 +45,8 @@ const MainLayout = ({ children }) => {
 }
 
 MainLayout.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  setSearch: PropTypes.func
 }
 
 export default MainLayout

@@ -20,7 +20,7 @@ const { Title, Text } = Typography
 const { useToken } = theme
 
 const WeatherToday = () => {
-  const [, , todayData, position] = useOutletContext()
+  const [todayData, position] = useOutletContext()
   const { token } = useToken()
   const { units } = useConfig()
 

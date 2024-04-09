@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 
@@ -19,7 +20,7 @@ import { apiCall } from '../utils/apiFunctions'
 const Main = () => {
   const { units } = useConfig()
 
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState(null)
   const [view, setView] = useState('today')
 
   const [loading, setLoading] = useState(true)
@@ -42,6 +43,23 @@ const Main = () => {
 
   useEffect(() => {
     (async () => {
+      if (search && search.place_id) {
+        const dataGoogle = await apiCall({ url: 'https://maps.googleapis.com/maps/api/geocode/json?place_id=' + search.place_id + '&key=' + KEY_GOOGLE_API })
+        console.log(dataGoogle)
+        if (dataGoogle?.status === 'OK') {
+          if (dataGoogle?.results.length > 0) {
+            const { structured_formatting: { main_text } } = search
+            const title = main_text
+
+            setPosition({ cords: dataGoogle.results[0].geometry.location, title })
+          }
+        }
+      }
+    })()
+  }, [search])
+
+  useEffect(() => {
+    (async () => {
       try {
         if (position?.cords) {
           const resToday = await apiCall({ url: `${BASE_URL_API}/weather?lat=${position?.cords?.lat}&lon=${position?.cords?.lng}&appid=${KEY_API}&units=${units.type}` })
@@ -59,7 +77,7 @@ const Main = () => {
   }, [position, units.type])
 
   return (
-    <MainLayout>
+    <MainLayout setSearch={setSearch}>
       <div style={{ position: 'relative', maxWidth: '50%' }}>
         <div style={{
           position: 'absolute',
@@ -80,7 +98,7 @@ const Main = () => {
       </div>
       <Row justify='end'>
         <FilterWeather view={view} setView={setView} />
-        {!loading && <Outlet context={[search, setSearch, todayData, position]} />}
+        {!loading && <Outlet context={[todayData, position, loading]} />}
       </Row>
     </MainLayout>
   )
