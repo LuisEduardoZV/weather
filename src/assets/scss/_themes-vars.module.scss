@@ -33,6 +33,8 @@ $grey600: #757575;
 $grey700: #616161;
 $grey900: #212121;
 
+$skeleton: rgba(0, 0, 0, 0.07);
+
 // ==============================|| DARK THEME VARIANTS ||============================== //
 
 // paper & background
@@ -99,6 +101,8 @@ $darkTextSecondary: #757575;
 	grey600: $grey600;
 	grey700: $grey700;
 	grey900: $grey900;
+
+	skeleton: $skeleton;
 
 	// ==============================|| DARK THEME VARIANTS ||============================== //
 

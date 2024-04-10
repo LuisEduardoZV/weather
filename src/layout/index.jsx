@@ -59,19 +59,22 @@ const Main = () => {
   }, [search])
 
   useEffect(() => {
-    (async () => {
-      try {
-        if (position?.cords) {
-          const resToday = await apiCall({ url: `${BASE_URL_API}/weather?lat=${position?.cords?.lat}&lon=${position?.cords?.lng}&appid=${KEY_API}&units=${units.type}` })
-          const airToday = await apiCall({ url: `${BASE_URL_API}/air_pollution?lat=${position?.cords?.lat}&lon=${position?.cords?.lng}&appid=${KEY_API}` })
-          setTodayData({ ...resToday, air: { ...airToday } })
+    try {
+      if (position?.cords) {
+        const resToday = apiCall({ url: `${BASE_URL_API}/weather?lat=${position?.cords?.lat}&lon=${position?.cords?.lng}&appid=${KEY_API}&units=${units.type}` })
+        const airToday = apiCall({ url: `${BASE_URL_API}/air_pollution?lat=${position?.cords?.lat}&lon=${position?.cords?.lng}&appid=${KEY_API}` })
 
-          setLoading(false)
-        }
-      } catch (error) {
-        console.log(error)
+
+        Promise.all([resToday, airToday]).then((values) => {
+          if (Array.isArray(values) && values.length > 1) {
+            setTodayData({ ...values[0], air: { ...values[1] } })
+            setLoading(false)
+          }
+        })
       }
-    })()
+    } catch (error) {
+      console.log(error)
+    }
 
     return () => setLoading(true)
   }, [position, units.type])
@@ -98,7 +101,7 @@ const Main = () => {
       </div>
       <Row justify='end'>
         <FilterWeather view={view} setView={setView} />
-        {!loading && <Outlet context={[todayData, position, loading]} />}
+        <Outlet context={[todayData, position, loading]} />
       </Row>
     </MainLayout>
   )

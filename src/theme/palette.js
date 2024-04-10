@@ -25,6 +25,7 @@ const defaultPalette = {
   grey600: colors.grey600,
   grey700: colors.grey700,
   grey900: colors.grey900,
+  skeleton: colors.skeleton,
   colorLink: '',
   colorTextBase: '',
   colorBgBase: colors.background,
