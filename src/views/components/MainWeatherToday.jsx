@@ -46,8 +46,8 @@ const MainWeatherToday = ({ data, title, loading, aprox }) => {
               <Text style={{ color: token.colorPrimary, fontWeight: 700 }}>Temperatura Mínima: <Text italic style={{ fontWeight: 400 }}>{data.temp_min?.toFixed(2)} °{units.temp}</Text></Text>
             </Flex>
             <Flex vertical style={{ width: '100%', height: '100%', justifyContent: aprox && 'space-between' }}>
-              <Text style={{ color: token.colorPrimary, fontWeight: 700 }}>Sensación térmica: <Text italic style={{ fontWeight: 400 }}>{data.feels_like?.toFixed(2)} °{units.temp}</Text></Text>
-              {data.humidity && <Text style={{ color: token.colorPrimary, fontWeight: 700 }}>Humedad: <Text italic style={{ fontWeight: 400 }}>{data.humidity?.toFixed(2)} °{units.temp}</Text></Text>}
+              <Text style={{ color: token.colorPrimary, fontWeight: 700 }}>Sensación Térmica: <Text italic style={{ fontWeight: 400 }}>{data.feels_like?.toFixed(2)} °{units.temp}</Text></Text>
+              {data.humidity && <Text style={{ color: token.colorPrimary, fontWeight: 700 }}>Humedad: <Text italic style={{ fontWeight: 400 }}>{data.humidity?.toFixed(2)} %</Text></Text>}
               {aprox && <Text type='secondary' italic>*Toda la información ha sido aproximada manualmente*</Text>}
             </Flex>
           </Flex>

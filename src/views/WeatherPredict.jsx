@@ -20,6 +20,7 @@ import { getIcon } from '../utils/iconWeather'
 
 const { Title, Text } = Typography
 const { useToken } = theme
+dayjs.locale('es')
 
 const WeatherPredict = () => {
   const [, position, loading, nextData, view] = useOutletContext()
@@ -139,8 +140,9 @@ const WeatherPredict = () => {
 
         <Row style={{ width: '100%', paddingInline: 50, paddingTop: 10 }} justify='center'>
           <Col xs={24}>
-            <Flex style={{ width: '100%' }}>
-              <Title style={{ marginTop: 10, color: token.colorTextLightSolid }}>Clima por hora</Title>
+            <Flex style={{ width: '100%', alignItems: 'end', gap: 10 }}>
+              <Title style={{ marginTop: 10, marginBottom: 40, color: token.colorTextLightSolid }}>Clima por hora: </Title>
+              <Title level={4} style={{ marginTop: 10, marginBottom: 40, color: token.colorPrimaryBorder }} className='datePredict'>{dayjs(view).format('dddd DD - MM - YYYY')}</Title>
             </Flex>
           </Col>
           <HoverEffect aprox>
