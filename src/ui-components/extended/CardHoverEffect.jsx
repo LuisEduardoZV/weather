@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react'
 
 import { Col } from 'antd'
 
-const HoverEffect = ({ className, children }) => {
+const HoverEffect = ({ className, children, aprox = false }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null)
 
   const items = useMemo(() => {
@@ -18,21 +18,22 @@ const HoverEffect = ({ className, children }) => {
         return (
           <Col
             key={idx}
-            xs={8}
+            xs={aprox ? 18 : 8}
             style={{
               position: 'relative',
               display: 'block',
-              padding: '0.5rem',
-              height: '100%',
+              padding: aprox ? '0.3rem' : '0.5rem',
+              height: !aprox && '100%',
               width: '100%'
             }}
+            className='main-hover-effect'
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
             <AnimatePresence>
               {hoveredIndex === idx && (
                 <motion.span
-                  className='motionSpan-card'
+                  className={aprox ? 'motionSpan-card-aprox' : 'motionSpan-card'}
                   layoutId='hoverBackground'
                   initial={{ opacity: 0 }}
                   animate={{
@@ -46,7 +47,7 @@ const HoverEffect = ({ className, children }) => {
                 />
               )}
             </AnimatePresence>
-            <Card>{item}</Card>
+            <Card aprox={aprox}>{item}</Card>
           </Col>
         )
       })}
@@ -54,14 +55,14 @@ const HoverEffect = ({ className, children }) => {
   )
 }
 
-const Card = ({ style, children }) => {
+const Card = ({ style, children, aprox }) => {
   return (
     <div
       style={{
         borderRadius: '1rem',
         height: '100%',
         width: '100%',
-        padding: '1rem',
+        padding: aprox ? 0 : '1rem',
         overflow: 'hidden',
         borderWidth: '1px',
         borderColor: 'transparent',

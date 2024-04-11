@@ -338,6 +338,72 @@
 	border-radius: 1.125rem;
 }
 
+.motionSpan-card-aprox {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: $background;
+	box-shadow: 0.9px 2.2px 1.8px rgba(0, 0, 0, 0.009), 2.2px 5.5px 4.4px rgba(0, 0, 0, 0.013), 4.4px 11.2px 9px rgba(0, 0, 0, 0.017), 9.1px 23px 18.6px rgba(0, 0, 0, 0.021),
+		25px 63px 51px rgba(0, 0, 0, 0.03);
+	display: block;
+	border-radius: 1.125rem;
+}
+
+.weather-peer-hour {
+	background-color: $background;
+}
+
+.weather-peer-hour .weather-peer-hour-title {
+	color: $primaryMain;
+}
+
+.weather-peer-hour-subtitle,
+.weather-peer-hour-subtitleweather {
+	position: absolute;
+}
+
+.position-subtitle-weather {
+	top: -40;
+}
+
+.weather-peer-hour-icon {
+	color: $primaryDark;
+	transition: all 0.15s ease-in;
+}
+
+.main-hover-effect:hover .weather-peer-hour {
+	background-color: $primaryMain;
+}
+
+.main-hover-effect:hover .weather-peer-hour .weather-peer-hour-title {
+	color: $paper;
+}
+
+.main-hover-effect:hover .weather-peer-hour .weather-peer-hour-value {
+	color: $paper;
+}
+
+.main-hover-effect:hover .weather-peer-hour .weather-peer-hour-subtitle {
+	color: $primaryLight;
+}
+
+.main-hover-effect:hover .weather-peer-hour .weather-peer-hour-subtitleweather {
+	color: $primaryLight;
+}
+
+.main-hover-effect:hover .weather-peer-hour .weather-peer-hour-icon {
+	color: $primaryLight;
+}
+
+.main-hover-effect .col-table:hover .weather-peer-hour-icon {
+	padding-right: 100%;
+	color: $primaryDark;
+}
+
 .cardAir {
 	border-width: 2px;
 	border-style: solid;
@@ -369,7 +435,7 @@
 .transition-visible {
 	visibility: visible;
 	opacity: 1;
-	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, color 0.15s ease-in;
 }
 
 .skeleton {
@@ -414,4 +480,22 @@
 	100% {
 		transform: translateX(100%);
 	}
+}
+
+.transition-all {
+	transition: all 0.15s ease-in;
+}
+
+.col-table .weather-peer-hour-subtitle,
+.col-table .weather-peer-hour-subtitleweather {
+	visibility: hidden;
+	opacity: 0;
+	z-index: -1;
+}
+
+.col-table:hover .weather-peer-hour-subtitle,
+.col-table .weather-peer-hour-subtitleweather {
+	visibility: visible;
+	opacity: 1;
+	z-index: 0;
 }

@@ -24,14 +24,14 @@ const WeatherToday = () => {
     if (loading) return { desc: '', icons: [] }
     const clima = todayData?.weather[0]
     const desc = weather[clima?.id ?? 200]
-    const infoIcons = getIcon(token, todayData.weather[0].icon ?? '01d')
+    const infoIcons = getIcon(token, todayData?.weather[0]?.icon ?? '01d')
 
     return { desc, infoIcons }
   }, [todayData, loading, token])
 
   const contamination = useMemo(() => {
     if (loading) return []
-    const info = todayData.air.list[0].components
+    const info = todayData?.air?.list[0]?.components
     const respose = []
     for (const key in info) {
       if (Object.hasOwnProperty.call(info, key)) {

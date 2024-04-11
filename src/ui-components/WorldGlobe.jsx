@@ -37,8 +37,8 @@ export function WorldGlobe ({ position, country = '' }) {
   const sampleArcs = [
     {
       order: 3,
-      startLat: position.lat,
-      startLng: position.lon,
+      startLat: position?.lat,
+      startLng: position?.lon,
       endLat: 22.3193,
       endLng: 114.1694,
       arcAlt: 0.5,

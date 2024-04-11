@@ -8,42 +8,25 @@ import dayjs from 'dayjs'
 // ant
 import { Flex, Menu } from 'antd'
 
-const defaultItems = [
-  {
-    label: (
-      <Link to=''>
-        Hoy
-      </Link>
-    ),
-    key: 'today'
-  },
-  {
-    label: (
-      <Link to=''>
-        Mañana
-      </Link>
-    ),
-    key: 'tomorrow'
-  }
-]
-
 const FilterWeather = ({ view, setView }) => {
   const onClick = (e) => {
     setView(e.key)
   }
 
   const items = useMemo(() => {
-    const newItems = [...defaultItems]
-    let date = dayjs(new Date()).add(2, 'day')
+    const newItems = []
+    let date = dayjs(new Date())
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 5; i++) {
       newItems.push({
         label: (
-          <Link to=''>
-            {date.format('DD/MM')}
+          <Link to={i === 0 ? '' : 'predict'}>
+            {i === 0
+              ? 'Hoy'
+              : i === 1 ? 'Mañana' : date.format('DD/MM')}
           </Link>
         ),
-        key: `day${i + 2}`
+        key: date.format('YYYY-MM-DD')
       })
       date = date.add(1, 'day')
     }

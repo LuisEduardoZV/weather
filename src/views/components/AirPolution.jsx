@@ -24,7 +24,7 @@ const AirPolution = ({ data }) => {
                 className='cardAir'
               >
                 <Title level={3} style={{ margin: 0 }}>{op.title}</Title>
-                <Text>{op.value} {op.sufix}</Text>
+                <Text>{op.value?.toFixed(2)} {op.sufix}</Text>
               </Flex>
             </Col>
           ))}

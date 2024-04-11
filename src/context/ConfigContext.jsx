@@ -15,7 +15,7 @@ const initialState = {
 const ConfigContext = createContext(initialState)
 
 function ConfigProvider ({ children }) {
-  const [config, setConfig] = useLocalStorage('tan-graph-config', {
+  const [config, setConfig] = useLocalStorage('weather-config', {
     theme: initialState.theme,
     locale: initialState.locale,
     units: initialState.units

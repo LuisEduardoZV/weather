@@ -2,6 +2,7 @@ import { useRoutes } from 'react-router-dom'
 
 // project imports
 import MainLayout from '../layout'
+import WeatherPredict from '../views/WeatherPredict'
 import WeatherToday from '../views/WeatherToday'
 
 export default function ThemeRoutes () {
@@ -20,7 +21,7 @@ export default function ThemeRoutes () {
     },
     {
       path: 'predict',
-      element: <>2</>
+      element: <WeatherPredict />
     }]
   }
   return useRoutes([Routes])
