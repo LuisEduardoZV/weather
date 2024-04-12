@@ -2,14 +2,15 @@ import { useLoadScript } from '@react-google-maps/api'
 import PropTypes from 'prop-types'
 
 // ant
-import { IconMoonStars, IconSearch, IconSunFilled, IconTemperatureCelsius, IconTemperatureFahrenheit } from '@tabler/icons-react'
-import { Button, Col, Flex, Input, Layout, Row, Typography, theme } from 'antd'
+import { IconMoonStars, IconSunFilled, IconTemperatureCelsius, IconTemperatureFahrenheit } from '@tabler/icons-react'
+import { Button, Col, Flex, Layout, Row, Typography, theme } from 'antd'
 
 // project imports
+import { KEY_GOOGLE_API, NAME_APP } from '../../config'
 import useConfig from '../../hooks/useConfig'
 import AutocompletePlaces from '../../ui-components/AutocompletePlace'
 
-import { KEY_GOOGLE_API } from '../../config'
+
 
 const { Header } = Layout
 const { Title } = Typography
@@ -61,17 +62,10 @@ const NavHeader = ({ setSearch }) => {
     >
       <Row align='middle' justify='center' style={{ paddingBottom: 20, height: 'min-content' }}>
         <Col xs={8}>
-          <Title level={3} style={{ margin: 0 }}>Aclimatate</Title>
+          <Title level={3} style={{ margin: 0 }}>{NAME_APP}</Title>
         </Col>
         <Col xs={13} push={3}>
           {isLoaded && <AutocompletePlaces setSearch={setSearch} />}
-          {/* <Input
-            placeholder='Buscar por ciudad o códig postal'
-            value={search}
-            onChange={handleChangeSearch}
-            prefix={<IconSearch color={token.colorPrimary} size={20} stroke={2} />}
-            style={{ maxWidth: '70%', paddingRight: 30, borderColor: token.colorPrimary }}
-    /> */}
         </Col>
         <Col xs={3}>
           <Flex style={{ alignItems: 'center', justifyContent: 'start', height: 'min-content', gap: 10 }}>

@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 import usePlacesAutocomplete from 'use-places-autocomplete'
 
 // ant
-import { AutoComplete, Flex, Typography, theme } from 'antd'
+import { AutoComplete, Flex, Input, Typography, theme } from 'antd'
 
 const { Text } = Typography
 const { useToken } = theme
@@ -48,8 +48,9 @@ const AutocompletePlaces = ({ setSearch }) => {
           </Flex>
         )
       }}
-      placeholder='Buscar lugar'
-    />
+    >
+      <Input.Search placeholder='Buscar lugar' enterButton />
+    </AutoComplete>
   )
 }
 
