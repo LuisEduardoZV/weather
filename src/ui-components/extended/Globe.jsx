@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unknown-property */
 'use client'
 import { OrbitControls } from '@react-three/drei'
 import { Canvas, extend, useThree } from '@react-three/fiber'
@@ -212,7 +215,7 @@ export default function World (props) {
   const scene = new Scene()
   scene.fog = new Fog(0xffffff, 400, 2000)
   return (
-    <Canvas scene={scene} camera={new PerspectiveCamera(50, aspect, 180, 1800)}>
+    <Canvas id='canvasMain' scene={scene} camera={new PerspectiveCamera(50, aspect, 180, 1800)} style={{ width: '100%', maxWidth: '100%', minWidth: '100%' }}>
       <WebGLRendererConfig />
       <ambientLight color={globeConfig.ambientLight} intensity={0.6} />
       <directionalLight

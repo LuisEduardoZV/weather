@@ -6,10 +6,10 @@ import { IconMoonStars, IconSunFilled, IconTemperatureCelsius, IconTemperatureFa
 import { Button, Col, Flex, Layout, Row, Typography, theme } from 'antd'
 
 // project imports
+import logo from '../../assets/img/appIcon.svg'
 import { KEY_GOOGLE_API, NAME_APP } from '../../config'
 import useConfig from '../../hooks/useConfig'
 import AutocompletePlaces from '../../ui-components/AutocompletePlace'
-
 
 
 const { Header } = Layout
@@ -62,7 +62,10 @@ const NavHeader = ({ setSearch }) => {
     >
       <Row align='middle' justify='center' style={{ paddingBottom: 20, height: 'min-content' }}>
         <Col xs={8}>
-          <Title level={3} style={{ margin: 0 }}>{NAME_APP}</Title>
+          <Flex align='center' style={{ gap: 15 }}>
+            <img alt='My weather app icon' src={logo} style={{ maxWidth: '15%', mixBlendMode: 'multiply' }} />
+            <Title level={3} style={{ margin: 0 }}>{NAME_APP}</Title>
+          </Flex>
         </Col>
         <Col xs={13} push={3}>
           {isLoaded && <AutocompletePlaces setSearch={setSearch} />}

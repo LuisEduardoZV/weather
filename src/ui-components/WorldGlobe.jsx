@@ -14,21 +14,21 @@ export function WorldGlobe ({ position, country = '' }) {
 
   const globeConfig = useMemo(() => ({
     pointSize: 20,
-    globeColor: '#6696F4',
+    globeColor: '#5383F3',
     showAtmosphere: true,
-    atmosphereColor: '#FFFFFF',
-    atmosphereAltitude: 0.1,
-    emissive: '#6696F4',
-    emissiveIntensity: 0.1,
+    atmosphereColor: '#000',
+    atmosphereAltitude: 0.2,
+    emissive: '#5383F3',
+    emissiveIntensity: 0.05,
     shininess: 0.9,
     polygonColor: '#000',
-    ambientLight: '#089AD9',
+    ambientLight: '#0A369D',
     directionalLeftLight: '#ffffff',
     directionalTopLight: '#ffffff',
     pointLight: '#ffffff',
     arcTime: 1000,
     arcLength: 0.9,
-    rings: 1,
+    rings: 2,
     maxRings: 3,
     autoRotate: true,
     initialPosition: position,
@@ -402,10 +402,12 @@ export function WorldGlobe ({ position, country = '' }) {
   return (
     <div style={{
       position: 'absolute',
-      width: '100%',
+      width: 400,
+      maxWidth: '100%',
+      minWidth: '100%',
       height: '70vh',
-      zIndex: 10,
-      cursor: 'grab'
+      cursor: 'grab',
+      display: 'flex'
     }}
     >
       <World data={sampleArcs} globeConfig={globeConfig} />

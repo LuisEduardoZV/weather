@@ -292,7 +292,7 @@
 	top: 50%;
 	transform: translate(-50%, -50%);
 	border-radius: 8px;
-	background-image: linear-gradient(to top, #5697e0 0%, #e7f0fd 100%);
+	background-image: linear-gradient(to top, #1677ff 0%, #e7f0fd 100%);
 	overflow: hidden;
 	z-index: 1;
 }
@@ -533,4 +533,10 @@
 	border-radius: 8px;
 	margin-top: 10;
 	z-index: 999999;
+}
+
+#canvasMain canvas {
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
 }

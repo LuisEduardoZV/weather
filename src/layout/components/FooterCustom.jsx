@@ -72,7 +72,7 @@ const FooterCustom = () => {
           <Flex vertical>
             <Title style={{ margin: 0, color: token.colorPrimaryText }} level={5}>Créditos
             </Title>
-            <Divider style={{ margin: 0, backgroundColor: token.colorPrimary, width: '100%', paddingInline: 70 }} />
+            <Divider style={{ margin: 0, backgroundColor: token.colorPrimary, width: '100%', paddingInline: 40 }} />
           </Flex>
           <Space direction='vertical' style={{ alignItems: 'start' }}>
             <Text>Datos del clima proporcionados por <Link to='https://openweathermap.org/' target='_blank' style={{ color: token.colorPrimaryTextActive, fontWeight: 600 }}>OpenWeather</Link>.</Text>
