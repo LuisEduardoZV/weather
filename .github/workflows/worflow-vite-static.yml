@@ -20,11 +20,6 @@ concurrency:
   group: 'pages'
   cancel-in-progress: true
 
-env:
-    VITE_BASE_URL_API: true
-    VITE_KEY_API: true
-    VITE_KEY_GOOGLE_API: true
-
 jobs:
   # Single deploy job since we're just deploying
   deploy:
@@ -51,6 +46,15 @@ jobs:
         with:
           # Upload dist folder
           path: './dist'
+      - name: Set environment variables
+        run: |
+          echo "VITE_BASE_URL_API=$VITE_BASE_URL_API" >> $GITHUB_ENV
+          echo "VITE_KEY_API=$VITE_KEY_API" >> $GITHUB_ENV
+          echo "VITE_KEY_GOOGLE_API=$VITE_KEY_GOOGLE_API" >> $GITHUB_ENV
+        env:
+          VITE_BASE_URL_API: ${{ secrets.VITE_BASE_URL_API }}
+          VITE_KEY_API: ${{ secrets.VITE_KEY_API }}
+          VITE_KEY_GOOGLE_API: ${{ secrets.VITE_KEY_GOOGLE_API }}
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
