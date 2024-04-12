@@ -1,7 +1,7 @@
 export const MAIN_PATH = 'weather'
 export const NAME_APP = 'WeatherApp'
 
-export const BASE_URL_API = 'http://api.openweathermap.org/data/2.5/'
+export const BASE_URL_API = 'https://api.openweathermap.org/data/2.5/'
 export const KEY_API = import.meta.env.VITE_KEY_API
 
 export const KEY_GOOGLE_API = import.meta.env.VITE_KEY_GOOGLE_API
