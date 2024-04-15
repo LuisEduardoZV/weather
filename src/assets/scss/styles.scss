@@ -399,28 +399,31 @@
 }
 
 .cardAir {
-	border-width: 2px;
-	border-style: solid;
-	border-radius: 5px;
-	border-color: $primaryLight;
+	outline-width: 2px;
+	outline-style: solid;
+	outline-color: $primaryLight;
 	background-color: $primaryMain;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	transition: all 0.3s ease-in-out;
 }
 
-.cardAir > h3,
-.cardAir > span {
+.cardAir > span,
+.cardAir .cardAirTitle > h3,
+.cardAir .cardAirTitle > span {
 	color: $grey50;
 }
 
 .cardAir:hover {
-	border-color: $primaryMain;
+	outline-color: $primaryLight;
 	background-color: $primaryLight;
+	outline-style: double;
+	outline-width: 10px;
 }
 
-.cardAir:hover > h3,
-.cardAir:hover > span {
+.cardAir:hover > span,
+.cardAir:hover .cardAirTitle > h3,
+.cardAir:hover .cardAirTitle > span {
 	color: $primaryMain;
 }
 

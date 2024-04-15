@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 import dayjs from 'dayjs'
 
 // ant imports
-import { Row } from 'antd'
+import { Flex, Row } from 'antd'
 
 // project  imports
 import useConfig from '../hooks/useConfig'
@@ -70,6 +70,13 @@ const Main = () => {
     return nextData
   }, [nextData])
 
+  const infoWorld = useMemo(() => {
+    return {
+      position: todayData?.coord,
+      country: todayData?.sys?.country
+    }
+  }, [todayData?.coord, todayData?.sys?.country])
+
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(async (position) => {
@@ -127,12 +134,23 @@ const Main = () => {
 
   return (
     <MainLayout setSearch={setSearch}>
-      <div style={{ position: 'relative', maxWidth: '50%', width: '100%' }}>
-        {!loading && <WorldGlobe position={todayData?.coord} country={todayData?.sys?.country} />}
-      </div>
+      <Flex style={{ position: 'relative', maxWidth: '50%', width: '100%', minWidth: '50%', zIndex: 10 }}>
+        {!loading && <WorldGlobe position={infoWorld.position} country={infoWorld.country} />}
+      </Flex>
       <Row justify='end'>
-        <FilterWeather view={view} setView={setView} />
-        <Outlet context={[todayData, position, loading, dataViews, view]} />
+        <Flex
+          vertical style={{
+            width: '100%',
+            minWidth: '100%',
+            maxWidth: '100%',
+            position: 'relative',
+            justifyContent: 'end',
+            alignItems: 'end'
+          }}
+        >
+          <FilterWeather view={view} setView={setView} />
+          <Outlet context={[todayData, position, loading, dataViews, view]} />
+        </Flex>
       </Row>
     </MainLayout>
   )

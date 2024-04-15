@@ -92,13 +92,13 @@ const SecondWeatherToday = ({ data, infoWeather }) => {
         }}
         >
           <IconCloudFog
-            color={token.colorInfo}
+            color={token.colorPrimaryActive}
             size={70}
             style={
                   {
                     opacity: 1,
                     zIndex: 10,
-                    filter: `drop-shadow(4.5px 4.5px 4.9px ${token.colorInfo})`
+                    filter: `drop-shadow(4.5px 4.5px 4.9px ${token.colorPrimaryActive})`
                   }
                 }
           />

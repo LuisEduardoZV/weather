@@ -136,7 +136,7 @@ const WeatherPredict = () => {
 
       <CardsInfo data={promedioInfo} aprox />
 
-      <Flex vertical style={{ width: '100%', alignItems: 'end', backgroundColor: token.colorPrimary, paddingTop: 30, marginTop: 100, paddingBottom: 50 }}>
+      <Flex vertical style={{ width: '100%', alignItems: 'end', backgroundColor: token.colorPrimary, paddingTop: 20, marginTop: 130, paddingBottom: 50 }}>
 
         <Row style={{ width: '100%', paddingInline: 50, paddingTop: 10 }} justify='center'>
           <Col xs={24}>

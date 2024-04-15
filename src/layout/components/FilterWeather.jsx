@@ -20,7 +20,7 @@ const FilterWeather = ({ view, setView }) => {
     for (let i = 0; i < 5; i++) {
       newItems.push({
         label: (
-          <Link to={i === 0 ? '' : 'predict'}>
+          <Link to={i === 0 ? '/' : 'predict'}>
             {i === 0
               ? 'Hoy'
               : i === 1 ? 'Mañana' : date.format('DD/MM')}
