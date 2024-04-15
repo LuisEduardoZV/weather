@@ -16,7 +16,7 @@ const SecondWeatherToday = ({ data, infoWeather }) => {
   const { units } = useConfig()
 
   return (
-    <Row style={{ maxWidth: '60%', width: '100%', paddingInline: '10%', marginTop: 60 }}>
+    <Row className='iconCardInfo'>
       <HoverEffect>
         <Flex style={{
           display: 'flex',

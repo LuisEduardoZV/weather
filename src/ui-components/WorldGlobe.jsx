@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { lazy, memo, useMemo } from 'react'
 
-import { Flex, theme } from 'antd'
+import { theme } from 'antd'
 
 const { useToken } = theme
 
@@ -9,7 +9,6 @@ const World = lazy(() => import('../ui-components/extended/Globe'))
 
 const WorldGlobe = memo(({ position, country = '' }) => {
   const { token } = useToken()
-  console.log(position, country)
 
   const globeConfig = useMemo(() => ({
     pointSize: 20,
@@ -36,17 +35,9 @@ const WorldGlobe = memo(({ position, country = '' }) => {
   }), [position, country, token])
 
   return (
-    <Flex style={{
-      position: 'absolute',
-      width: 400,
-      maxWidth: '100%',
-      minWidth: '100%',
-      height: '70vh',
-      cursor: 'grab'
-    }}
-    >
+    <>
       <World globeConfig={globeConfig} />
-    </Flex>
+    </>
   )
 })
 

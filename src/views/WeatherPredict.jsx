@@ -11,8 +11,9 @@ import { Col, Flex, Row, Typography, theme } from 'antd'
 // project
 import { HoverEffect } from '../ui-components/extended/CardHoverEffect'
 import AirPolution from './components/AirPolution'
-import CardsInfo from './components/CardsInfo'
 import MainWeatherToday from './components/MainWeatherToday'
+import WindCard from './components/WindCard'
+
 
 import useConfig from '../hooks/useConfig'
 import weather from '../utils/data/weathers.json'
@@ -130,19 +131,19 @@ const WeatherPredict = () => {
 
   return (
     <Flex style={{ position: 'relative', justifyContent: 'end', width: '100%', paddingRight: 0, flexDirection: 'column', alignItems: 'end' }}>
-      <Row style={{ maxWidth: '60%', width: '100%', marginTop: 50, padding: 0, paddingInline: '10%', marginBottom: 90 }}>
-        <MainWeatherToday data={promedioInfo.main} title={position?.title} loading={loading} aprox />
+      <MainWeatherToday data={promedioInfo.main} title={position?.title} loading={loading} aprox />
+
+      <Row className='rowWindAprox'>
+        <WindCard data={promedioInfo} aprox />
       </Row>
 
-      <CardsInfo data={promedioInfo} aprox />
+      <Flex vertical className='secondContainerPredict' style={{ backgroundColor: token.colorPrimary }}>
 
-      <Flex vertical style={{ width: '100%', alignItems: 'end', backgroundColor: token.colorPrimary, paddingTop: 20, marginTop: 130, paddingBottom: 50 }}>
-
-        <Row style={{ width: '100%', paddingInline: 50, paddingTop: 10 }} justify='center'>
+        <Row style={{ width: '100%', paddingTop: 10 }} justify='center'>
           <Col xs={24}>
-            <Flex style={{ width: '100%', alignItems: 'end', gap: 10 }}>
-              <Title style={{ marginTop: 10, marginBottom: 40, color: token.colorTextLightSolid }}>Clima por hora: </Title>
-              <Title level={4} style={{ marginTop: 10, marginBottom: 40, color: token.colorPrimaryBorder }} className='datePredict'>{dayjs(view).format('dddd DD - MM - YYYY')}</Title>
+            <Flex style={{ width: '100%', gap: 10 }} className='peerHourTitle'>
+              <Title level={1} style={{ color: token.colorTextLightSolid }}>Clima por hora: </Title>
+              <Title level={4} style={{ color: token.colorPrimaryBorder }} className='datePredict'>{dayjs(view).format('dddd DD - MM - YYYY')}</Title>
             </Flex>
           </Col>
           <HoverEffect aprox>
@@ -160,8 +161,8 @@ const WeatherPredict = () => {
                         <Title level={5} style={{ margin: 0 }} className='transition-all weather-peer-hour-title'>{dayjs(op.dt_txt).format('hh:mm A')}</Title>
                       </Col>
                     </Row>
-                    <Row justify='end' align='end'>
-                      <Col xs={4} className='col-table'>
+                    <Row justify='end' align='end' style={{ rowGap: 40 }}>
+                      <Col xs={8} sm={4} className='col-table'>
                         <Flex vertical justify='center' align='center' style={{ position: 'relative' }}>
                           <Text italic className='transition-all weather-peer-hour-value'>{op.main.temp} °{units.temp}</Text>
                           <Flex justify='center' align='center'>
@@ -169,7 +170,7 @@ const WeatherPredict = () => {
                           </Flex>
                         </Flex>
                       </Col>
-                      <Col xs={5} className='col-table'>
+                      <Col xs={8} sm={5} className='col-table'>
                         <Flex vertical justify='center' align='center'>
                           <Text italic className='transition-all weather-peer-hour-value'>{op.main.temp_max} °{units.temp}</Text>
                           <Flex justify='center' align='center'>
@@ -177,7 +178,7 @@ const WeatherPredict = () => {
                           </Flex>
                         </Flex>
                       </Col>
-                      <Col xs={5} className='col-table'>
+                      <Col xs={8} sm={5} className='col-table'>
                         <Flex vertical justify='center' align='center'>
                           <Text italic className='transition-all weather-peer-hour-value'>{op.main.temp_min} °{units.temp}</Text>
                           <Flex justify='center' align='center'>
@@ -186,7 +187,7 @@ const WeatherPredict = () => {
                           </Flex>
                         </Flex>
                       </Col>
-                      <Col xs={5} className='col-table'>
+                      <Col xs={12} sm={5} className='col-table'>
                         <Flex vertical justify='center' align='center'>
                           <Text italic className='transition-all weather-peer-hour-value'>{op.main.feels_like} °{units.temp}</Text>
                           <Flex justify='center' align='center'>
@@ -195,7 +196,7 @@ const WeatherPredict = () => {
                           </Flex>
                         </Flex>
                       </Col>
-                      <Col xs={5} className='col-table'>
+                      <Col xs={12} sm={5} className='col-table'>
                         <Flex style={{
                           display: 'flex',
                           flexDirection: 'column',

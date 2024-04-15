@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router-dom'
 
 
 // ant
-import { Col, Flex, Row, theme } from 'antd'
+import { Flex, theme } from 'antd'
 
 // project imports
 import AirPolution from './components/AirPolution'
@@ -49,18 +49,8 @@ const WeatherToday = () => {
 
   return (
     <Flex style={{ position: 'relative', justifyContent: 'end', width: '100%', paddingRight: 0, flexDirection: 'column', alignItems: 'end' }}>
-      <Row style={{ maxWidth: '60%', width: '100%', marginTop: 50, padding: 0, paddingInline: '10%' }}>
-        <Col
-          xs={24} style={{
-            position: 'relative',
-            margin: 0,
-            minHeight: 130,
-            height: '100%'
-          }}
-        >
-          <MainWeatherToday data={todayData?.main} title={position?.title} loading={loading} />
-        </Col>
-      </Row>
+
+      <MainWeatherToday data={todayData?.main} title={position?.title} loading={loading} />
 
       <SecondWeatherToday data={todayData} infoWeather={infoWeather} />
 

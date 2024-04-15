@@ -9,7 +9,7 @@ import { AutoComplete, Flex, Input, Typography, theme } from 'antd'
 const { Text } = Typography
 const { useToken } = theme
 
-const AutocompletePlaces = ({ setSearch }) => {
+const AutocompletePlaces = ({ setSearch, subMenu = false }) => {
   const {
     ready,
     value,
@@ -25,9 +25,7 @@ const AutocompletePlaces = ({ setSearch }) => {
       value={value}
       disabled={!ready}
       options={finalOptions}
-      style={{
-        width: '60%'
-      }}
+      className='searchInput'
       onSearch={(val) => {
         setValue(val)
       }}
@@ -55,7 +53,8 @@ const AutocompletePlaces = ({ setSearch }) => {
 }
 
 AutocompletePlaces.propTypes = {
-  setSearch: PropTypes.func
+  setSearch: PropTypes.func,
+  subMenu: PropTypes.bool
 }
 
 export default AutocompletePlaces

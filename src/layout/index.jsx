@@ -134,10 +134,10 @@ const Main = () => {
 
   return (
     <MainLayout setSearch={setSearch}>
-      <Flex style={{ position: 'relative', maxWidth: '50%', width: '100%', minWidth: '50%', zIndex: 10 }}>
+      <Flex className='containerGlobe'>
         {!loading && <WorldGlobe position={infoWorld.position} country={infoWorld.country} />}
       </Flex>
-      <Row justify='end'>
+      <Row justify='end' style={{ backgroundColor: 'transparent' }}>
         <Flex
           vertical style={{
             width: '100%',
@@ -145,7 +145,8 @@ const Main = () => {
             maxWidth: '100%',
             position: 'relative',
             justifyContent: 'end',
-            alignItems: 'end'
+            alignItems: 'end',
+            backgroundColor: 'transparent'
           }}
         >
           <FilterWeather view={view} setView={setView} />

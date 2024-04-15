@@ -9,16 +9,16 @@ const { useToken } = theme
 const AirPolution = ({ data }) => {
   const { token } = useToken()
   return (
-    <Row style={{ width: '100%', paddingInline: 50, paddingTop: 50 }} justify='center'>
+    <Row className='airRow' justify='center'>
       <Col xs={24}>
         <Flex style={{ width: '100%' }}>
-          <Title style={{ marginTop: 10, color: token.colorTextLightSolid }}>Contaminación atmosférica</Title>
+          <Title level={3} style={{ marginTop: 10, color: token.colorTextLightSolid }}>Contaminación atmosférica</Title>
         </Flex>
       </Col>
-      <Col xs={13} style={{ marginTop: 50 }}>
+      <Col xs={24} lg={18} style={{ marginTop: 50 }}>
         <Row style={{ width: '100%', justifyContent: 'space-between', rowGap: 40 }}>
           {data.map((op, index) => (
-            <Col key={index} xs={7}>
+            <Col key={index} xs={10} sm={7}>
               <Flex
                 vertical align='center' justify='center'
                 className='cardAir'

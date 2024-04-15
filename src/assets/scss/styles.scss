@@ -332,21 +332,6 @@
 	border-radius: 1.125rem;
 }
 
-.motionSpan-card-aprox {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	background-color: $background;
-	box-shadow: 0.9px 2.2px 1.8px rgba(0, 0, 0, 0.009), 2.2px 5.5px 4.4px rgba(0, 0, 0, 0.013), 4.4px 11.2px 9px rgba(0, 0, 0, 0.017), 9.1px 23px 18.6px rgba(0, 0, 0, 0.021),
-		25px 63px 51px rgba(0, 0, 0, 0.03);
-	display: block;
-	border-radius: 1.125rem;
-}
-
 .weather-peer-hour {
 	background-color: $background;
 }
@@ -358,6 +343,7 @@
 .weather-peer-hour-subtitle,
 .weather-peer-hour-subtitleweather {
 	position: absolute;
+	font-size: 12px;
 }
 
 .position-subtitle-weather {
@@ -542,4 +528,378 @@
 	display: flex !important;
 	justify-content: center !important;
 	align-items: center !important;
+}
+
+/*   RESPONSIVE STYLES       */
+
+.header {
+	margin: 0;
+	height: 'fit-content';
+	padding: 10px;
+}
+
+.header .titleNav h3 {
+	font-size: 20px;
+}
+
+.searchInput {
+	width: 100%;
+}
+
+.containerGlobe {
+	max-width: 100%;
+	width: 100%;
+	min-width: 100%;
+	z-index: 9999999;
+	display: none;
+	max-height: 100vh;
+	height: 100%;
+	cursor: grab;
+}
+
+.filterWeather {
+	justify-content: flex-end;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	padding-top: 10px;
+}
+
+.mainCardInfo {
+	max-width: 100%;
+	width: 100%;
+	margin-top: 40px;
+	padding: 0;
+	padding-inline: 5%;
+}
+
+.mainCardInfo h4 {
+	font-size: 18px;
+}
+
+.mainCardInfo div span {
+	font-size: 13px;
+}
+
+.mainCardInfo div span > span {
+	width: 100%;
+	display: flex;
+}
+
+.iconCardInfo {
+	max-width: 100%;
+	width: 100%;
+	padding-inline: 10%;
+	margin-top: 60px;
+}
+
+.airRow {
+	width: 100%;
+	padding-inline: 25px;
+	padding-top: 50px;
+}
+
+.rowWindAprox {
+	width: 100%;
+	padding-inline: 5%;
+	margin-top: 15%;
+}
+
+.secondContainerPredict {
+	width: 100%;
+	align-items: start;
+	justify-content: start;
+	padding-top: 20px;
+	margin-top: 80px;
+	padding-bottom: 50px;
+}
+
+.peerHourTitle {
+	margin-bottom: 30px;
+	padding-inline: 30px;
+}
+
+.secondContainerPredict .peerHourTitle h1,
+.secondContainerPredict .peerHourTitle h4 {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.secondContainerPredict .peerHourTitle h1 {
+	font-size: 30px;
+}
+
+.secondContainerPredict .peerHourTitle h4 {
+	align-self: end;
+	font-size: 15px;
+}
+
+.secondContainerPredict .peerHourTitle {
+	flex-direction: column;
+}
+
+.mainColHoverEffect {
+	position: relative;
+	display: block;
+	padding: 0px;
+	height: fit-content;
+	width: 100%;
+}
+
+.motionSpan-card-aprox {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: $background;
+	box-shadow: 0.9px 2.2px 1.8px rgba(0, 0, 0, 0.009), 2.2px 5.5px 4.4px rgba(0, 0, 0, 0.013), 4.4px 11.2px 9px rgba(0, 0, 0, 0.017), 9.1px 23px 18.6px rgba(0, 0, 0, 0.021),
+		25px 63px 51px rgba(0, 0, 0, 0.03);
+	display: block;
+	border-radius: 8px;
+}
+
+.weather-peer-hour-value {
+	margin-bottom: 5px;
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+.rowFooter {
+	gap: 30px;
+	padding: 5%;
+	justify-content: start;
+}
+
+.rowCardsInfo {
+	width: 100%;
+	padding: 0;
+	justify-content: space-between;
+	align-items: center;
+	padding-inline: 10%;
+	row-gap: 50px;
+}
+
+.ant-menu {
+	font-size: 13px;
+	justify-content: center;
+}
+
+/* 576px */
+@media screen and (min-width: 576px) {
+	.mainCardInfo div span > span {
+		display: inline-block;
+	}
+	.header {
+		padding: 0px;
+	}
+
+	.header .titleNav h3 {
+		font-size: 20px;
+	}
+
+	.searchInput {
+		width: 80%;
+	}
+
+	.filterWeather {
+		width: 55%;
+	}
+
+	.containerGlobe {
+		display: flex;
+		height: 40vh;
+		max-width: 40%;
+		min-width: 40%;
+		position: absolute;
+		z-index: 9999;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	.mainCardInfo {
+		max-width: 60%;
+		margin-top: 40px;
+		padding: 0;
+		padding-inline: 5%;
+	}
+
+	.secondContainerPredict .peerHourTitle h1 {
+		font-size: 40px;
+	}
+
+	.secondContainerPredict .peerHourTitle h4 {
+		font-size: 20px;
+	}
+
+	.secondContainerPredict .peerHourTitle {
+		flex-direction: row;
+	}
+
+	.col-sun-positions-type {
+		font-size: 12px;
+	}
+}
+
+/* 768 px */
+@media screen and (min-width: 768px) {
+	.mainCardInfo div span > span {
+		display: inline-block;
+	}
+
+	.containerGlobe {
+		display: flex;
+		height: 40vh;
+		max-width: 50%;
+		min-width: 50%;
+		position: absolute;
+		z-index: 9999;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	.mainCardInfo {
+		max-width: 55%;
+		margin-top: 40px;
+		padding: 0;
+		padding-inline: 7%;
+	}
+
+	.mainCardInfo h4 {
+		font-size: 20px;
+	}
+
+	.iconCardInfo {
+		margin-top: 80px;
+	}
+
+	.col-sun-positions-type {
+		font-size: 15px;
+	}
+}
+
+/* 992 px */
+@media screen and (min-width: 992px) {
+	.header {
+		padding-inline: 0px;
+	}
+
+	.ant-menu {
+		font-size: 15px;
+	}
+
+	.header .titleNav h3 {
+		font-size: 25px;
+	}
+
+	.searchInput {
+		width: 70%;
+	}
+
+	.mainCardInfo h4 {
+		font-size: 25px;
+	}
+
+	.mainCardInfo div span {
+		font-size: 15px;
+	}
+
+	.rowWindAprox {
+		justify-content: end;
+		padding-inline: 7%;
+		margin-top: 7%;
+	}
+
+	.iconCardInfo {
+		max-width: 50%;
+		padding-inline: 0;
+		margin-top: 70px;
+		padding-right: 5%;
+	}
+
+	.rowCardsInfo {
+		padding-inline: 5%;
+	}
+
+	.col-sun-positions-type {
+		font-size: 13px;
+	}
+
+	.airRow h3 {
+		font-size: 35px;
+	}
+
+	.weather-peer-hour-subtitle,
+	.weather-peer-hour-value {
+		font-size: 15px;
+	}
+
+	.rowFooter {
+		gap: 0px;
+		padding: 2%;
+		justify-content: space-between;
+	}
+}
+
+/* 1200px */
+@media screen and (min-width: 1200px) {
+	.header {
+		padding-inline: 15px;
+	}
+
+	.ant-menu {
+		font-size: 17px;
+	}
+
+	.containerGlobe {
+		display: flex;
+		height: 65vh;
+		max-width: 50%;
+		min-width: 50%;
+		position: absolute;
+		z-index: 9999;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	.searchInput {
+		width: 80%;
+	}
+
+	.mainCardInfo h4 {
+		font-size: 30px;
+	}
+
+	.mainCardInfo div span {
+		font-size: 17px;
+	}
+
+	.mainCardInfo div span > span {
+		display: inline;
+	}
+
+	.rowCardsInfo {
+		padding-inline: 10%;
+	}
+
+	.col-sun-positions-type {
+		font-size: 15px;
+	}
+
+	.airRow {
+		padding-inline: 10%;
+	}
+
+	.secondContainerPredict {
+		padding-inline: 10%;
+		padding-top: 60px;
+	}
 }

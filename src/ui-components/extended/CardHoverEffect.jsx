@@ -18,15 +18,10 @@ const HoverEffect = ({ className, children, aprox = false }) => {
         return (
           <Col
             key={idx}
-            xs={aprox ? 18 : 8}
-            style={{
-              position: 'relative',
-              display: 'block',
-              padding: aprox ? '0.3rem' : '0.5rem',
-              height: !aprox && '100%',
-              width: '100%'
-            }}
-            className='main-hover-effect'
+            xs={aprox ? 18 : 24}
+            sm={aprox ? 20 : 8}
+            lg={aprox ? 20 : 8}
+            className={`main-hover-effect ${aprox ? 'mainColHoverEffect' : 'mainColHoverEffect'}`}
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
           >

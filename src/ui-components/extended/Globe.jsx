@@ -544,7 +544,6 @@ export function Globe ({ globeConfig }) {
 
 export function WebGLRendererConfig () {
   const { gl, size } = useThree()
-  console.log(size)
 
   useEffect(() => {
     gl.setPixelRatio(window.devicePixelRatio)

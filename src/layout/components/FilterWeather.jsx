@@ -35,7 +35,7 @@ const FilterWeather = ({ view, setView }) => {
   }, [])
 
   return (
-    <Flex style={{ justifyContent: 'flex-end', padding: 0, margin: 0, width: '50%', paddingTop: 20 }}>
+    <Flex className='filterWeather'>
       <Menu onClick={onClick} selectedKeys={[view]} mode='horizontal' items={items} style={{ flex: 'auto', backgroundColor: 'transparent', width: 'fit-content' }} />
     </Flex>
   )

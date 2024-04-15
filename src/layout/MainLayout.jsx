@@ -19,7 +19,7 @@ const MainLayout = ({ children, setSearch }) => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: token.colorBgBase,
+      backgroundColor: 'transparent',
       position: 'relative'
     }}
     >
@@ -46,7 +46,8 @@ const MainLayout = ({ children, setSearch }) => {
       <Footer style={{
         textAlign: 'center',
         width: '100%',
-        background: token.colorBgBase
+        background: token.colorBgBase,
+        padding: 0
       }}
       >
         <FooterCustom />

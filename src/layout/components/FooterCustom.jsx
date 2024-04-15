@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 // ant
@@ -10,18 +11,18 @@ import { NAME_APP } from '../../config'
 const { Text, Title } = Typography
 const { useToken } = theme
 
-const FooterCustom = () => {
+const FooterCustom = ({ inSubMenu = false }) => {
   const { token } = useToken()
 
   return (
     <Row
       align='start'
-      justify='start'
+      className='rowFooter'
     >
-      <Col xs={6} style={{ display: 'flex', justifyContent: 'start', alignItems: 'center' }}>
+      <Col xs={24} sm={11} lg={7} style={{ display: 'flex', justifyContent: 'start', alignItems: 'center' }}>
         <Text style={{ alignItems: 'center', display: 'flex', gap: 5, fontWeight: 500 }}><strong color={token.colorPrimaryText} style={{ fontSize: '1.4rem' }}>©</strong> {NAME_APP} | Todos los derechos reservados. 2024.</Text>
       </Col>
-      <Col xs={6}>
+      <Col xs={24} sm={11} lg={5}>
         <Flex vertical justify='start' align='start' style={{ gap: 10 }}>
           <Flex vertical>
             <Title style={{ margin: 0, color: token.colorPrimaryText }} level={5}>APIs utilizadas:
@@ -44,7 +45,7 @@ const FooterCustom = () => {
           </Space>
         </Flex>
       </Col>
-      <Col xs={6}>
+      <Col xs={24} sm={11} lg={5}>
         <Flex vertical justify='start' align='start' style={{ gap: 10 }}>
           <Flex vertical>
             <Title style={{ margin: 0, color: token.colorPrimaryText }} level={5}>Enlaces externos:
@@ -67,14 +68,14 @@ const FooterCustom = () => {
           </Space>
         </Flex>
       </Col>
-      <Col xs={6}>
+      <Col xs={24} sm={11} lg={5}>
         <Flex vertical justify='start' align='start' style={{ gap: 10 }}>
           <Flex vertical>
             <Title style={{ margin: 0, color: token.colorPrimaryText }} level={5}>Créditos
             </Title>
             <Divider style={{ margin: 0, backgroundColor: token.colorPrimary, width: '100%', paddingInline: 40 }} />
           </Flex>
-          <Space direction='vertical' style={{ alignItems: 'start' }}>
+          <Space direction='vertical' style={{ alignItems: 'start', justifyContent: 'start', textAlign: 'left' }}>
             <Text>Datos del clima proporcionados por <Link to='https://openweathermap.org/' target='_blank' style={{ color: token.colorPrimaryTextActive, fontWeight: 600 }}>OpenWeather</Link>.</Text>
             <Text>Diseño y desarrollo por <i style={{ color: token.colorPrimary }}>Luis Eduardo Zúñiga Vera</i>.</Text>
             <Flex style={{ gap: 15 }}>
@@ -90,6 +91,10 @@ const FooterCustom = () => {
       </Col>
     </Row>
   )
+}
+
+FooterCustom.propTypes = {
+  inSubMenu: PropTypes.bool
 }
 
 export default FooterCustom
