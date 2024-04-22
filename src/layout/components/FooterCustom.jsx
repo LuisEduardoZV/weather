@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 // ant
-import { IconAntenna, IconBook, IconBrandGithub, IconBrandLinkedin, IconBrightness2, IconDeviceLaptop, IconHaze, IconSunWind } from '@tabler/icons-react'
+import { IconAntenna, IconBook, IconBrandGithub, IconBrandLinkedin, IconBrightness2, IconDeviceLaptop, IconHaze, IconServer, IconSunWind } from '@tabler/icons-react'
 import { Avatar, Col, Divider, Flex, Row, Space, Typography, theme } from 'antd'
 
 // project
@@ -57,9 +57,13 @@ const FooterCustom = ({ inSubMenu = false }) => {
               <IconDeviceLaptop stroke={1} color={token.colorPrimaryTextActive} size={20} />
               <Text style={{ fontWeight: 500, fontStyle: 'italic' }}>Portafolio</Text>
             </Link>
-            <Link to='https://github.com/LuisEduardoZV/starlink-vinculation-app' target='_blank' style={{ display: 'flex', justifyContent: 'center', gap: 10 }}>
+            <Link to='https://luiseduardozv.github.io/antennaApp/' target='_blank' style={{ display: 'flex', justifyContent: 'center', gap: 10 }}>
               <IconAntenna stroke={1} color={token.colorPrimaryTextActive} size={20} />
-              <Text style={{ fontWeight: 500, fontStyle: 'italic' }}>AnthemLink App</Text>
+              <Text style={{ fontWeight: 500, fontStyle: 'italic' }}>Antenna App</Text>
+            </Link>
+            <Link to='https://github.com/LuisEduardoZV/server-antennaApp' target='_blank' style={{ display: 'flex', justifyContent: 'center', gap: 10 }}>
+              <IconServer stroke={1} color={token.colorPrimaryTextActive} size={20} />
+              <Text style={{ fontWeight: 500, fontStyle: 'italic' }}>Antenna App Server</Text>
             </Link>
             <Link to='https://github.com/LuisEduardoZV/marvel-project' target='_blank' style={{ display: 'flex', justifyContent: 'center', gap: 10 }}>
               <IconBook stroke={1} color={token.colorPrimaryTextActive} size={20} />
@@ -78,7 +82,7 @@ const FooterCustom = ({ inSubMenu = false }) => {
           <Space direction='vertical' style={{ alignItems: 'start', justifyContent: 'start', textAlign: 'left' }}>
             <Text>Datos del clima proporcionados por <Link to='https://openweathermap.org/' target='_blank' style={{ color: token.colorPrimaryTextActive, fontWeight: 600 }}>OpenWeather</Link>.</Text>
             <Text>Diseño y desarrollo por <i style={{ color: token.colorPrimary }}>Luis Eduardo Zúñiga Vera</i>.</Text>
-            <Flex style={{ gap: 15 }}>
+            <Flex style={{ gap: 15, zIndex: 10 }}>
               <Link to='https://github.com/LuisEduardoZV' target='_blank'>
                 <Avatar style={{ backgroundColor: token.colorPrimaryBg, color: token.colorPrimaryActive }} icon={<IconBrandGithub />} />
               </Link>
