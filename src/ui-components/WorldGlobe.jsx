@@ -5,7 +5,7 @@ import { theme } from 'antd'
 
 const { useToken } = theme
 
-const World = lazy(() => import('../ui-components/extended/Globe'))
+const World = lazy(() => import('./extended/World'))
 
 const WorldGlobe = memo(({ position, country = '' }) => {
   const { token } = useToken()
