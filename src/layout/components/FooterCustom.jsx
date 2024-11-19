@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 // ant
-import { IconAntenna, IconBook, IconBrandGithub, IconBrandLinkedin, IconBrightness2, IconDeviceLaptop, IconHaze, IconServer, IconSunWind } from '@tabler/icons-react'
+import { IconBrandGithub, IconBrandLinkedin, IconBrightness2, IconDeviceLaptop, IconHaze, IconShoppingCart, IconSunWind } from '@tabler/icons-react'
 import { Avatar, Col, Divider, Flex, Row, Space, Typography, theme } from 'antd'
 
 // project
@@ -11,7 +10,7 @@ import { NAME_APP } from '../../config'
 const { Text, Title } = Typography
 const { useToken } = theme
 
-const FooterCustom = ({ inSubMenu = false }) => {
+const FooterCustom = () => {
   const { token } = useToken()
 
   return (
@@ -57,17 +56,9 @@ const FooterCustom = ({ inSubMenu = false }) => {
               <IconDeviceLaptop stroke={1} color={token.colorPrimaryTextActive} size={20} />
               <Text style={{ fontWeight: 500, fontStyle: 'italic' }}>Portafolio</Text>
             </Link>
-            <Link to='https://luiseduardozv.github.io/antennaApp/' target='_blank' style={{ display: 'flex', justifyContent: 'center', gap: 10 }}>
-              <IconAntenna stroke={1} color={token.colorPrimaryTextActive} size={20} />
-              <Text style={{ fontWeight: 500, fontStyle: 'italic' }}>Antenna App</Text>
-            </Link>
-            <Link to='https://github.com/LuisEduardoZV/server-antennaApp' target='_blank' style={{ display: 'flex', justifyContent: 'center', gap: 10 }}>
-              <IconServer stroke={1} color={token.colorPrimaryTextActive} size={20} />
-              <Text style={{ fontWeight: 500, fontStyle: 'italic' }}>Antenna App Server</Text>
-            </Link>
-            <Link to='https://github.com/LuisEduardoZV/marvel-project' target='_blank' style={{ display: 'flex', justifyContent: 'center', gap: 10 }}>
-              <IconBook stroke={1} color={token.colorPrimaryTextActive} size={20} />
-              <Text style={{ fontWeight: 500, fontStyle: 'italic' }}>Marvel's Project</Text>
+            <Link to='https://luiseduardozv.github.io/market/' target='_blank' style={{ display: 'flex', justifyContent: 'center', gap: 10 }}>
+              <IconShoppingCart stroke={1} color={token.colorPrimaryTextActive} size={20} />
+              <Text style={{ fontWeight: 500, fontStyle: 'italic' }}>SimuShop</Text>
             </Link>
           </Space>
         </Flex>
@@ -95,10 +86,6 @@ const FooterCustom = ({ inSubMenu = false }) => {
       </Col>
     </Row>
   )
-}
-
-FooterCustom.propTypes = {
-  inSubMenu: PropTypes.bool
 }
 
 export default FooterCustom
